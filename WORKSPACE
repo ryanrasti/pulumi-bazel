@@ -1,3 +1,5 @@
+workspace(name = "pulumi_bazel")
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -19,12 +21,6 @@ load("@rules_python//python:pip.bzl", "pip_install")
 
 # Create a central external repo, @pip, that contains Bazel targets for all the
 # third-party packages specified in the requirements.txt file.
-pip_install(
-   name = "pip_main",
-   requirements = "//:requirements.txt",
-   python_interpreter_target=interpreter
-)
-
 pip_install(
    name = "pip_test",
    requirements = "//test/project:requirements.txt",
