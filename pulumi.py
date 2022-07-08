@@ -21,8 +21,8 @@ def main():
   old_pulumi = shutil.which('pulumi')
   os.environ['PATH'] = f'{pulumi_path()}:{os.environ["PATH"]}'
   new_pulumi = shutil.which('pulumi')
-  print(f'{old_pulumi} -> {new_pulumi}')
-  print(os.environ['PATH'])
+  if old_pulumi == new_pulumi:
+    raise ValueError(f'pulumi ({old_pulumi}) PATH not set properly: {os.environ["PATH"]}')
   args = ['pulumi'] + sys.argv[1:]
   os.execvp(args[0], args)
 

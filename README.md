@@ -5,12 +5,19 @@ Requirements:
 1. `pulumi` installed
 
 Usage:
-1. Load this workspace as an external workspace:
+1. Load the pulumi dependency and this workspace as an external workspace:
 ```
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "pulumi_bazel",
     remote = "https://github.com/ryanrasti/pulumi-bazel.git"
+)
+
+http_archive(
+    name = "pulumi",
+    sha256 = "2d7e0ce78520799b130e3525378f353a339981d53064883f794a670c9cc5d4e8",
+    url = "https://github.com/pulumi/pulumi/releases/download/v3.35.3/pulumi-v3.35.3-linux-x64.tar.gz",
+    build_file = "@pulumi_bazel//:pulumi.BUILD",
 )
 ```
 1. Use the rule `pulumi_python` in the directory with your pulumi project. See `test/project/BUILD` for an example.
@@ -23,3 +30,6 @@ Note: you will likely need `pip` dependencies via Bazel:
 Note: since the likely use-case is that you will run pulumi commands via `bazel` and
 want to keep the outputs (e.g., stack yaml files) in source control, the generated
 `//...:pulumi` target is run in the actual source directory (rather than a generated one).
+
+TODO: user should have an option to use a local pulumi install rather than use the hermetic one.
+TODO: user shouldn't need to copy two dependencies -- pulumi dependency should be automatic.
