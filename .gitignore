@@ -1,3 +1,5 @@
 bazel-bin
 bazel-out
 .pulumi
+bazel-pulumi-bazel
+bazel-testlogs
