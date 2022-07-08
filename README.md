@@ -10,7 +10,7 @@ Usage:
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "pulumi_bazel",
-    remote = "https://github.com/ryanrasti/pulumi-bazel"
+    remote = "https://github.com/ryanrasti/pulumi-bazel.git"
 )
 ```
 1. Use the rule `pulumi_python` in the directory with your pulumi project. See `test/project/BUILD` for an example.
