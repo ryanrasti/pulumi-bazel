@@ -1,1 +1,1 @@
-exports_files(["python.py", "pulumi.sh"])
+exports_files(["python.py", "pulumi.py"])
