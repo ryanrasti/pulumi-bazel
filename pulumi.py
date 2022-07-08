@@ -8,6 +8,7 @@ def main():
   print(path('.'))
   os.environ['PULUMI_PYTHON_CMD'] = path('./python')
   os.chdir(path('.'))
+  print(os.getcwd())
   args = ['pulumi'] + sys.argv[1:]
   os.execvp(args[0], args)
 
