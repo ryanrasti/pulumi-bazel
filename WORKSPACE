@@ -26,3 +26,10 @@ pip_install(
    requirements = "//test/project:requirements.txt",
    python_interpreter_target=interpreter
 )
+
+http_archive(
+    name = "pulumi",
+    sha256 = "2d7e0ce78520799b130e3525378f353a339981d53064883f794a670c9cc5d4e8",
+    url = "https://github.com/pulumi/pulumi/releases/download/v3.35.3/pulumi-v3.35.3-linux-x64.tar.gz",
+    build_file = "@pulumi_bazel//:pulumi.BUILD",
+)
