@@ -8,18 +8,12 @@ def path(p):
   return os.path.realpath((os.path.join(os.path.dirname(__file__), p)))
 
 def main():
-  print(path('.'))
   rel_python_path = os.path.join(os.path.dirname(__file__), './python')
   os.environ['PULUMI_PYTHON_CMD'] = os.path.realpath(rel_python_path)
   
   # Change into the acutal source directory (*not* the runfiles directory)
-  rp = os.path.realpath(os.path.join(os.path.dirname(__file__), 'Pulumi.yaml'))
-  print(f'rp: {rp}')
-  dn = os.path.dirname(rp)
-  print(f'dn {dn}')
-  os.chdir(dn)
-  print(os.getcwd())
-  print(__file__)
+  p = os.path.realpath(os.path.join(os.path.dirname(__file__), 'Pulumi.yaml'))
+  os.chdir(os.path.dirname(p))
   args = ['pulumi'] + sys.argv[1:]
   os.execvp(args[0], args)
 
