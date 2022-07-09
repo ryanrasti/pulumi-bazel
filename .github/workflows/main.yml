@@ -21,6 +21,7 @@ jobs:
           key: pulumi
       - name: Install bazelisk
         run: |
+          set -eo pipefail
           curl "https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64" | sudo dd of=/usr/bin/bazel
           echo "6b0bcb2ea15bca16fffabe6fda75803440375354c085480fe361d2cbf32501db /usr/bin/bazel" | sha256sum -c 
           chmod +x /usr/bin/bazel
