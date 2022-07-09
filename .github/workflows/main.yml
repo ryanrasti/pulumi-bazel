@@ -21,7 +21,7 @@ jobs:
           key: bazelisk
       - name: Install bazelisk
         run: |
-          set -eo pipefail
+          set -ev -o pipefail
           BIN=/home/runner/.cache/bazelisk/bazelisk-linux-amd64
           [[ -f "$BIN" ]] || curl -L "https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64" > "$BIN"
           echo "6b0bcb2ea15bca16fffabe6fda75803440375354c085480fe361d2cbf32501db $BIN" | sha256sum -c 
