@@ -25,7 +25,7 @@ def pulumi_python_project(data=[], deps=[], visibility=None):
   native.py_binary(
     name = "pulumi",
     srcs = [":gen_pulumi"],
-    data = [":python"] + ["Pulumi.yaml"] + native.glob(["Pulumi.*.yaml"]),
+    data = [":python", "Pulumi.yaml",  "@pulumi//:binaries"] + native.glob(["Pulumi.*.yaml"]),
     deps = ["@rules_python//python/runfiles"],
     visibility = visibility,
   )
