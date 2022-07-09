@@ -10,4 +10,4 @@ cd $(basename "$REPO")
 
 TAG=tester:local-$(uuidgen)
 docker build env/. -t $TAG
-docker run -it -v $(pwd):/src $TAG test/test.sh
+docker run -it -v $(pwd):/src -w /src $TAG test/test.sh
