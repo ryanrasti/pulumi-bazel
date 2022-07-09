@@ -14,7 +14,7 @@ jobs:
         with:
           path: "/home/runner/.cache/bazel"
           key: bazel
-      - name: Mount bazel cache
+      - name: Mount bazelisk cache
         uses: actions/cache@v1
         with:
           path: "/home/runner/.cache/bazelisk"
@@ -22,9 +22,11 @@ jobs:
       - name: Install bazelisk
         run: |
           set -eo pipefail
-          curl -L "https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64" | sudo dd of=/usr/bin/bazel
-          echo "6b0bcb2ea15bca16fffabe6fda75803440375354c085480fe361d2cbf32501db /usr/bin/bazel" | sha256sum -c 
-          sudo chmod +x /usr/bin/bazel
+          BIN=/home/runner/.cache/bazelisk/bazelisk-linux-amd64
+          [[ -f "$BIN" ]] || curl -L "https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64" > "$BIN"
+          echo "6b0bcb2ea15bca16fffabe6fda75803440375354c085480fe361d2cbf32501db $BIN" | sha256sum -c 
+          sudo chmod +x "$BIN"
+          ln -s "$BIN" /usr/bin/bazel
       - name: Test
         run: |
           test/test.sh
