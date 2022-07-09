@@ -1,7 +1,0 @@
-# action.yml
-name: "Test"
-description: "Test"
-runs:
-  using: "docker"
-  image: "./env/Dockerfile"
-  entrypoint: test/test.sh

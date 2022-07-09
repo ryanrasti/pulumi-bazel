@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ev
 
+cd $(dirname "$0")
+
 REPO=$(git rev-parse --show-toplevel)
 TMP=$(mktemp -d)
 echo "In $TMP"
