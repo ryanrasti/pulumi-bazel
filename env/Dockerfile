@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM bash:latest
 
 # https://docs.bazel.build/versions/main/install-ubuntu.html#install-on-ubuntu
 # Note that we also need Python for the shebang added to python targets!
