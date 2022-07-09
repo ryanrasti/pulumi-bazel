@@ -4,5 +4,4 @@ description: "Test"
 runs:
   using: "docker"
   image: "docker://l.gcr.io/google/bazel:latest"
-  args:
-    - test/test.sh
+  entrypoint: test/test.sh
