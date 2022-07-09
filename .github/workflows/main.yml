@@ -14,6 +14,11 @@ jobs:
         with:
           path: "/home/runner/.cache/bazel"
           key: bazel
+      - name: Mount bazel cache
+        uses: actions/cache@v1
+        with:
+          path: "/home/runner/.cache/bazelisk"
+          key: bazelisk
       - name: Install bazelisk
         run: |
           set -eo pipefail
