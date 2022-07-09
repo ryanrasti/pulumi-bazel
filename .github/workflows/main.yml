@@ -20,10 +20,10 @@ jobs:
           path: "/home/runner/.pulumi/plugins"
           key: pulumi
       - name: Install bazelisk
-          run: |
-            curl "https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64" > /usr/bin/bazel
-            echo "6b0bcb2ea15bca16fffabe6fda75803440375354c085480fe361d2cbf32501db /usr/bin/bazel" | sha256sum -c 
-            chmod +x /usr/bin/bazel
+        run: |
+          curl "https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64" > /usr/bin/bazel
+          echo "6b0bcb2ea15bca16fffabe6fda75803440375354c085480fe361d2cbf32501db /usr/bin/bazel" | sha256sum -c 
+          chmod +x /usr/bin/bazel
       - name: Test
-          run: |
-            test/test.sh
+        run: |
+          test/test.sh
