@@ -1,7 +1,10 @@
 FROM ubuntu:22.04
-RUN apt-get update && apt-get install -y ca-certificates
-ADD https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64 /usr/bin/bazel
-RUN chmod u+x /usr/bin/bazel
-RUN bazel
+
+RUN apt-get update && apt-get install -y apt-transport-https curl gnupg
+RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg
+RUN mv bazel.gpg /etc/apt/trusted.gpg.d/
+RUN echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
+RUN apt-get update && apt-get install -y bazel
+
 RUN mkdir /src
 WORKDIR /src

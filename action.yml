@@ -3,5 +3,5 @@ name: "Test"
 description: "Test"
 runs:
   using: "docker"
-  image: "docker://l.gcr.io/google/bazel:5.2.0"
+  image: "./env/Dockerfile"
   entrypoint: test/test.sh
