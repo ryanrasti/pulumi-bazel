@@ -3,4 +3,6 @@ name: "Test"
 description: "Test"
 runs:
   using: "docker"
-  image: "./Dockerfile"
+  image: "docker://l.gcr.io/google/bazel:latest"
+  args:
+    - test/test.sh
